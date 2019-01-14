@@ -14,14 +14,14 @@ namespace MusicStore.Controllers
             return "Hello from Store.Index()";
         }
 
-        public String Browse()
+        public String Browse(String Genre)
         {
-            return "Hello from Store.Browse()";
+            return HttpUtility.HtmlEncode( "Hello from Store.Browse(): "+ Genre);
         }
 
-        public String Details()
+        public String Details(int id)
         {
-            return "Hello from Store.Details()";
+            return "Hello from Store.Details(), ID="+id;
         }
     }
 }

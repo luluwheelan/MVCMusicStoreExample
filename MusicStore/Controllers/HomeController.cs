@@ -16,7 +16,7 @@ namespace MusicStore.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Mmmmm Donuts!";
-
+            ViewBag.Message2 = "I like sprinkle donuts!";
             return View();
         }
 

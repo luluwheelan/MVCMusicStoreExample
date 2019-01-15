@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MusicStore.Controllers
 {
+    public delegate String Bob();
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -17,6 +18,8 @@ namespace MusicStore.Controllers
         {
             ViewBag.Message = "Mmmmm Donuts!";
             ViewBag.Message2 = "I like sprinkle donuts!";
+            
+            ViewBag.Message3 =(Bob) delegate() { return "DOOONUT"; };
             return View();
         }
 

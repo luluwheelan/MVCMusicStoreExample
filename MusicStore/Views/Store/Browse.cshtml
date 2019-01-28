@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MusicStore.Models.Album>
+
+@{
+    ViewBag.Title = "Browse";
+}
+
+<h2>Browse</h2>
+
+<table class="table">
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href='@Url.Action("Details", new { id = item.AlbumId })'>
+                <img src='@item.AlbumArtUrl' /><br />
+                @Html.DisplayFor(modelItem => item.Artist.Name)<br />
+
+                @Html.DisplayFor(modelItem => item.Title)<br />
+                @Html.DisplayFor(modelItem => item.Price)
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

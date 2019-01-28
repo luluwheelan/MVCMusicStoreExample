@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,12 +7,17 @@ using System.Web.Mvc;
 
 namespace MusicStore.Controllers
 {
+
     public delegate String Bob();
+
+    [RequireHttps]
     public class HomeController : Controller
     {
+        private MusicStoreContext db = new MusicStoreContext();
         public ActionResult Index()
         {
-            return View();
+            var genres = from genre in db.Genres select genre;
+            return View(genres);
         }
 
         public ActionResult About()

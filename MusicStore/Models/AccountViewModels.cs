@@ -79,6 +79,18 @@ namespace MusicStore.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Address")]
+        [Required]
+        public string Address { get; set; }
+
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Twitter Handle")]
+        
+        public string TwitterHandle { get; set; }
+
     }
 
     public class ResetPasswordViewModel

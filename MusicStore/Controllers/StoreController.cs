@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,22 +7,36 @@ using System.Web.Mvc;
 
 namespace MusicStore.Controllers
 {
+
+    [RequireHttps]
     public class StoreController : Controller
     {
+        private MusicStoreContext db = new MusicStoreContext();
+
         // GET: Store
         public String Index()
         {
             return "Hello from Store.Index()";
         }
 
-        public String Browse(String Genre)
+        public ActionResult Browse(String Genre)
         {
-            return HttpUtility.HtmlEncode( "Hello from Store.Browse(): "+ Genre);
+            var albums = (from genre in db.Genres where genre.Name.Equals(Genre) select genre.Albums).SingleOrDefault();
+            //if(albums == null) //goto an error page
+            return View(albums);
         }
 
-        public String Details(int id)
+        public ActionResult Details(int id)
         {
-            return "Hello from Store.Details(), ID="+id;
+            var album = (from a in db.Albums where a.AlbumId == id select a).SingleOrDefault();
+            return View(album);
+        }
+
+        [Authorize]
+        public ActionResult Buy(int id)
+        {
+            var album = (from a in db.Albums where a.AlbumId == id select a).SingleOrDefault();
+            return View(album);
         }
     }
 }

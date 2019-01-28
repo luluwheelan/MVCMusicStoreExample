@@ -13,6 +13,7 @@ namespace MusicStore.Models
         public virtual int ArtistId { get; set; }
         [Required(ErrorMessage = "You must specify an album title")]
         public virtual String Title { get; set; }
+        [DataType(DataType.Currency)]
         public virtual Decimal Price { get; set; }
         public virtual String AlbumArtUrl { get; set; }
         public virtual Genre Genre { get; set; }

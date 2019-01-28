@@ -1,6 +1,19 @@
-﻿@{
-    Layout = "~/Views/Shared/SiteLayout.cshtml";
-    ViewBag.Title = "This is our Index";
-}
-<h1>This is our index view!</h1>
+﻿@model IEnumerable<MusicStore.Models.Genre>
 
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "Browse","Store",new { genre = item.Name }, new { }) <br />
+            @Html.ActionLink(item.Description ?? " ","Browse", "Store", new { genre = item.Name }, new { })
+        </td>
+    </tr>
+}
+
+</table>

@@ -10,6 +10,8 @@ using MusicStore.Models;
 
 namespace MusicStore.Controllers
 {
+
+    [RequireHttps]
     [Authorize]
     public class ManageController : Controller
     {

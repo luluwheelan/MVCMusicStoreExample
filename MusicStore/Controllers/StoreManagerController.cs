@@ -10,6 +10,8 @@ using MusicStore.Models;
 
 namespace MusicStore.Controllers
 {
+    [Authorize(Roles ="Admin")]
+    [RequireHttps]
     public class StoreManagerController : Controller
     {
         private MusicStoreContext db = new MusicStoreContext();

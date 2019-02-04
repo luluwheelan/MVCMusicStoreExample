@@ -7,13 +7,26 @@
 <h2>Index</h2>
 
 <table class="table">
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.Name, "Browse","Store",new { genre = item.Name }, new { }) <br />
-            @Html.ActionLink(item.Description ?? " ","Browse", "Store", new { genre = item.Name }, new { })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Browse", "Store", new { genre = item.Name }, new { }) <br />
+                @Html.ActionLink(item.Description ?? " ", "Browse", "Store", new { genre = item.Name }, new { })
+            </td>
+        </tr>
+    }
+
+    <div id="special">
+        @Ajax.ActionLink("specials!",
+                "special",
+                null,
+                new AjaxOptions        {
+                    UpdateTargetId = "special",
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "GET"        },
+                new {@class = "btn btn-primary"})
+    </div>
+
 
 </table>

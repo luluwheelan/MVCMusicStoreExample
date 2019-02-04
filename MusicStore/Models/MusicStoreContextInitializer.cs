@@ -19,7 +19,8 @@ namespace MusicStore.Models
                 Artist = new Artist { Name = "Scars on Broadway" },
                 Genre = metal,
                 Price = 9.99m,
-                Title = "Dictator"
+                Title = "Dictator",
+                AlbumArtUrl = "https://i.imgur.com/D5zbJZQ.png"
             });
 
             base.Seed(context);

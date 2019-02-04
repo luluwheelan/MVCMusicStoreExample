@@ -4,9 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -30,6 +32,28 @@
         </div>
     </div>
     <div class="container body-content">
+        <div class="panel panel-default">
+            <div class="panel-heading">Artist search</div>
+            <div class="panel-body">
+                @using (Ajax.BeginForm("ArtistSearch", "Home",
+                    new AjaxOptions
+                    {
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "GET",
+                        OnFailure = "searchFailed",
+                        LoadingElementId = "ajax-loader",
+                        UpdateTargetId = "searchresults",
+                    }))
+                {
+                    <input type="text" name="q" autocomplete="off" data-autocomplete-source="@Url.Action("QuickSearch","Home")" />
+                    <input type="submit" value="search" />
+
+                }
+                <div id="searchresults"></div>
+            </div>
+        </div>
+
+
         @RenderBody()
         <hr />
         <footer>
@@ -40,5 +64,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/app/musicscripts.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
 </body>
 </html>

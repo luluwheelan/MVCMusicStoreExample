@@ -10,7 +10,7 @@
     
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td id="album-list">
             <a href='@Url.Action("Details", new { id = item.AlbumId })'>
                 <img src='@item.AlbumArtUrl' /><br />
                 @Html.DisplayFor(modelItem => item.Artist.Name)<br />

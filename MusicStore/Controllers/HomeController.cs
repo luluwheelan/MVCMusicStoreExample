@@ -40,5 +40,34 @@ namespace MusicStore.Controllers
         {
             return View();
         }
+        public ActionResult Special()
+        {
+            var album = GetSpecial();
+            return PartialView("_Special", album);
+        }
+        // Select an album and discount it by 50%        
+        private Album GetSpecial()
+        {
+            var album = db.Albums
+                .OrderBy(a => System.Guid.NewGuid())
+                .First();
+            album.Price *= 0.5m;
+            return album;
+        }
+        public ActionResult ArtistSearch(string q)
+        {
+            var artists = GetArtists(q);
+            return PartialView(artists);
+        }
+        private List<Artist> GetArtists(string searchString)
+        {
+            return db.Artists.Where(a => a.Name.Contains(searchString)).ToList();
+        }
+        public ActionResult QuickSearch(string term)
+        {
+            var artists = GetArtists(term).Select(a => new { value = a.Name });
+            return Json(artists, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using MusicStore.Validation;
 
 namespace MusicStore.Models
 {
@@ -82,6 +83,7 @@ namespace MusicStore.Models
 
         [DataType(DataType.Text)]
         [Display(Name = "Address")]
+        [MaxWords(2,ErrorMessage="You must have less than 2 words in your {0}")]
         [Required]
         public string Address { get; set; }
 

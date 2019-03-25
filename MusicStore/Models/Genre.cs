@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace MusicStore.Models
         [DisplayName("Genre Name")]
         public virtual String Name { get; set; }
         public virtual String Description { get; set; }
+        [JsonIgnoreAttribute]
         public virtual List<Album> Albums { get; set; }
     }
 }

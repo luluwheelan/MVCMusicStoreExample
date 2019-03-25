@@ -22,7 +22,14 @@ namespace MusicStore.Models
                 Title = "Dictator",
                 AlbumArtUrl = "https://i.imgur.com/D5zbJZQ.png"
             });
-
+            context.Albums.Add(new Album
+            {
+                Artist = new Artist { Name = "album artist 2" },
+                Genre = metal,
+                Price = 19.99m,
+                Title = "album 2",
+                AlbumArtUrl = "https://i.imgur.com/D5zbJZQ.png"
+            });
             base.Seed(context);
         }
 
